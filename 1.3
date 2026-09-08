@@ -1,0 +1,27 @@
+PROCEDURE Main
+    LOCAL nRows, nRow, nCol
+    LOCAL nC
+
+    nRows := 10
+
+    FOR nRow := 0 TO nRows - 1
+        nC := 1
+
+        FOR nCol := 0 TO nRow
+            // текущий биномиальный коэф
+            ?? nC, SPACE(4)
+
+            // следующий коэф по рекуррентной формуле:
+            // C(n, k+1) = C(n, k) * (n - k) / (k + 1)
+            // n = nRow, k = nCol
+            IF nCol < nRow
+                nC := nC * (nRow - nCol) / (nCol + 1)
+            ENDIF
+        NEXT nCol
+
+        // Переход на новую строку (после вывода всей строки треугольника)
+        ?
+    NEXT nRow
+
+    WAIT "Нажмите любую клавишу для выхода..."
+RETURN
