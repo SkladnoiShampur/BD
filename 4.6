@@ -1,0 +1,17 @@
+Set date Italian
+Use STUD
+
+Index on IIF(MONTH(dr) = 5 .OR. MONTH(dr) = 9, 1, 0) to STUD_Exotic
+Set index to STUD_Exotic
+Set softseek on
+
+Seek 1
+
+? "Родившиеся в мае или сентябре:"
+Do while !Eof() .and. IIF(MONTH(dr) = 5 .OR. MONTH(dr) = 9, 1, 0) = 1
+   ? fio, dr
+   Skip
+Enddo
+
+Set softseek off
+Set index to
